@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
+import Confetti from "react-confetti";
 
 function App() {
    const [dice, setDice] = useState(allNewDice());
@@ -13,10 +13,7 @@ function App() {
 
       if (allHeld && allSameValue) {
          setTenzies(true);
-         console.log("You won!");
       }
-
-      console.log("Dice state changed");
    }, [dice]);
 
    function allNewDice() {
@@ -67,6 +64,7 @@ function App() {
 
    return (
       <div className="flex justify-center items-center bg-[#0B2434] p-12 h-[100vh]">
+         {tenzies && <Confetti />}
          <main className="flex flex-col justify-around items-center gap-8 bg-[#F5F5F5] py-8 rounded-xl w-full max-w-[800px] text-center">
             <h1 className="font-bold font-karla text-[#2B283A] text-5xl">
                Tenzies
@@ -83,7 +81,7 @@ function App() {
                onClick={rollDice}
                className="bg-[#5035FF] my-4 px-6 py-2 rounded-lg font-karla text-3xl text-white"
             >
-               Roll
+               {tenzies ? "New Game" : "Roll"}
             </button>
          </main>
       </div>
