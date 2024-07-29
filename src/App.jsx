@@ -39,7 +39,17 @@ function App() {
    });
 
    function rollDice() {
-      setDice(allNewDice);
+      setDice((oldDice) =>
+         oldDice.map((die) => {
+            return die.isHeld
+               ? die
+               : {
+                    value: Math.ceil(Math.random() * 6),
+                    isHeld: false,
+                    id: nanoid(),
+                 };
+         })
+      );
    }
 
    return (
@@ -51,7 +61,7 @@ function App() {
 
             <button
                onClick={rollDice}
-               className="bg-[#5035FF] px-6 py-2 rounded-sm font-karla text-3xl text-white"
+               className="bg-[#5035FF] px-6 py-2 rounded-lg font-karla text-3xl text-white"
             >
                Roll
             </button>
