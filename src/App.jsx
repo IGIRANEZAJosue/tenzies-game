@@ -11,17 +11,16 @@ function App() {
       for (let i = 0; i < 10; i++) {
          newDice.push({
             value: Math.ceil(Math.random() * 6),
-            isHeld: false,
+            isHeld: true,
             id: nanoid(),
          });
       }
 
-      console.log(newDice);
       return newDice;
    }
 
    const diceElements = dice.map((die) => {
-      return <Die value={die.value} />;
+      return <Die key={die.id} value={die.value} isHeld={die.isHeld} />;
    });
 
    function rollDice() {
