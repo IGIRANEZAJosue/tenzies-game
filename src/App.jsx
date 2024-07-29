@@ -49,17 +49,17 @@ function App() {
    });
 
    function rollDice() {
-      setDice((oldDice) =>
-         oldDice.map((die) => {
-            return die.isHeld
-               ? die
-               : {
-                    value: Math.ceil(Math.random() * 6),
-                    isHeld: false,
-                    id: nanoid(),
-                 };
-         })
-      );
+      if(!tenzies) {
+         setDice((oldDice) =>
+            oldDice.map((die) => {
+               return die.isHeld ? die
+                                 : { value: Math.ceil(Math.random() * 6), isHeld: false, id: nanoid(),};
+            })
+         );
+      } else {
+         setTenzies(false)
+         setDice(allNewDice)
+      }
    }
 
    return (
