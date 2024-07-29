@@ -54,7 +54,9 @@ function App() {
 
    return (
       <div className="flex justify-center items-center bg-[#0B2434] p-12 h-[100vh]">
-         <main className="flex flex-col justify-around items-center bg-[#F5F5F5] rounded-xl w-full max-w-[800px] h-[400px] font-inter">
+         <main className="flex flex-col justify-around items-center bg-[#F5F5F5] rounded-xl w-full max-w-[800px] h-[400px]">
+            <h1 className="font-bold font-karla text-5xl">Tenzies</h1>
+            <p className="font-inter text-xl"></p>
             <div className="gap-6 grid grid-cols-5 grid-rows-2">
                {diceElements}
             </div>
