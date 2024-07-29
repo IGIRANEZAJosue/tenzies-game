@@ -18,12 +18,23 @@ function App() {
       return <Die value={die} />;
    });
 
+   function rollDice() {
+      setDice(allNewDice);
+   }
+
    return (
       <div className="flex justify-center items-center bg-[#0B2434] p-12 h-[100vh]">
-         <main className="flex justify-center items-center bg-[#F5F5F5] rounded-xl w-full max-w-[800px] h-[400px] font-inter">
+         <main className="flex flex-col justify-center items-center bg-[#F5F5F5] rounded-xl w-full max-w-[800px] h-[400px] font-inter">
             <div className="gap-6 grid grid-cols-5 grid-rows-2">
                {diceElements}
             </div>
+
+            <button
+               onClick={rollDice}
+               className="bg-[#5035FF] mt-6 px-6 py-2 rounded-sm font-karla text-3xl text-white"
+            >
+               Roll
+            </button>
          </main>
       </div>
    );
